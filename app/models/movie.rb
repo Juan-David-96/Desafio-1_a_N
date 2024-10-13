@@ -1,7 +1,5 @@
 class Movie < ApplicationRecord
-  #belongs_to :client, optional: true
-  has_many :client 
-
+  belongs_to :client, optional: true
   def to_s
     self.name
   end

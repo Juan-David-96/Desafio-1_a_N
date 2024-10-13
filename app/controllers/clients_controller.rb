@@ -3,7 +3,7 @@ class ClientsController < ApplicationController
 
   # GET /clients or /clients.json
   def index
-    @clients = Client.all
+    @clients = Client.order(:id)
   end
 
   # GET /clients/1 or /clients/1.json
@@ -48,12 +48,19 @@ class ClientsController < ApplicationController
   end
 
   # DELETE /clients/1 or /clients/1.json
-  def destroy
-    @client.destroy
+  
 
-    respond_to do |format|
-      format.html { redirect_to clients_url, notice: "Client was successfully destroyed." }
-      format.json { head :no_content }
+  def destroy
+    if @client.destroy
+      respond_to do |format|
+        format.html { redirect_to clients_url, notice: "Cliente eliminado" }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to client_url, notice: "No se puede eliminar el cliente porque tiene películas asociadas" }
+        format.json { render json: @client.errors, status: :unprocessable_entity }
+      end
     end
   end
 

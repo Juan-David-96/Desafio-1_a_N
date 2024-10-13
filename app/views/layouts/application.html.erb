@@ -5,15 +5,43 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   </head>
 
-  <body>
-    <%= render "shared/navbar" %>
+  <body style="background-color: #0e68a7">
+    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: rgba(5,44,101,255);">
+  <div class="container">
+    <a class="navbar-brand text-light" href="<%= pages_index_path %>">
+    <img src="<%= image_path('logo_blockbuster.png') %>" alt="Blockbuster Logo" class="logo" style="width: 70px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-light" href="<%= clients_path %>">Clientes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="<%= movies_path %>">Películas</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
     <div class="container">
       <%= yield %>
+      <footer class="text-center mt-5">
+        <a href="<%= pages_index_path%>">
+          <img src="<%= image_path('logo_blockbuster.png') %>" alt="Blockbuster Logo" class="mb-4 logo" style="width: 250px;">
+        </a>
+        <p>&copy; 2024 Blockbuster. Todos los derechos reservados. Esta página está dedicada a la alquilación de películas clásicas y modernas. ¡Explora nuestra colección y disfruta de tus películas favoritas!</p>
+      </footer>
     </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </body>
 </html>

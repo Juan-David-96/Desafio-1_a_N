@@ -1,4 +1,3 @@
 class Client < ApplicationRecord
-  #has_many :movies
-  belongs_to :movies
+  has_many :movies, dependent: :restrict_with_error
 end
